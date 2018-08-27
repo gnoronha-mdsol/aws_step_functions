@@ -38,7 +38,7 @@ aws configure
 Setup your access key and secret key to your AWS IAM user.
 Update the ACTIVITY_ARN and region within the activities located in `bin` folder.
 
-`bin/run_addition_activity.rb` and `bin/run_product_activity.rb`
+`run_addition_activity.rb` and `run_product_activity.rb`
 
 ### Run the activities:
 

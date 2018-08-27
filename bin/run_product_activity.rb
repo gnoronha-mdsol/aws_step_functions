@@ -42,6 +42,7 @@ activity = StepFunctions::Activity.new(
 )
 
 # The start method takes as argument the block that is the actual logic of your custom activity.
+# Just multiplies the digits of the 3 digit number
 activity.start do |input|
 	product = input['number'].to_s.chars.map(&:to_i).reduce(:*)
     { result: :SUCCESS, action: :product, product: product }
