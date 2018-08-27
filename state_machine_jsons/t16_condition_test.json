@@ -1,0 +1,36 @@
+{
+  "Comment": "A demo of Choice state for Team 16",
+  "StartAt": "is_even",
+  "States": {
+    "is_even": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:767904627276:function:t16_check_is_even",
+      "Next": "select_next_state"
+    },
+    "select_next_state": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.is_even",
+          "BooleanEquals": true,
+          "Next": "calculate_product"
+        },
+        {
+          "Variable": "$.is_even",
+          "BooleanEquals": false,
+          "Next": "calculate_addition"
+        }
+      ]
+    },
+    "calculate_product": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:us-east-1:767904627276:activity:t16_product",
+      "End": true
+    },
+    "calculate_addition": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:us-east-1:767904627276:activity:t16_addition",
+      "End": true
+    }
+  }
+}
