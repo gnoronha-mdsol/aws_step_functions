@@ -17,6 +17,7 @@ The Step Function [t16_condition_test](https://console.aws.amazon.com/states/hom
 1. Activites
 	1. an Activity [t16_addition](./bin/run_addition_activity.rb) - adds the digits of the number
 	1. an Activity [t16_product](./bin/run_product_activity.rb) - mulitplies the digits of the number
+1. a reduction Activity [t16_random_exception](./bin/run_reduction_activity.rb) that randomly throws exceptions
 
 ![Visual Workflow of the Step Function](https://s3.amazonaws.com/mingest/glen/visual_Workflow.png)
 
@@ -42,15 +43,17 @@ Update the ACTIVITY_ARN and region within the activities located in `bin` folder
 
 ### Run the activities:
 
-Open two terminals and run
+Open three terminals and run
 
 ```bash
 ./bin/run_addition_activity.rb
 ```
-and
-
 ```bash
 ./bin/run_product_activity.rb
+```
+and
+```bash
+./bin/run_reduction_activity.rb
 ```
 
 ### Start the execution:
