@@ -19,7 +19,7 @@ The Step Function [t16_condition_test](https://console.aws.amazon.com/states/hom
 	1. an Activity [t16_product](./bin/run_product_activity.rb) - mulitplies the digits of the number
 1. a reduction Activity [t16_random_exception](./bin/run_reduction_activity.rb) that randomly throws exceptions
 
-![Visual Workflow of the Step Function](https://s3.amazonaws.com/mingest/glen/visual_Workflow.png)
+![Visual Workflow of the Step Function](https://s3.amazonaws.com/mingest/glen/visual_workflow_01.png)
 
 
 ## Setting up the code
