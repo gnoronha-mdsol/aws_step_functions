@@ -25,11 +25,22 @@
     "calculate_product": {
       "Type": "Task",
       "Resource": "arn:aws:states:us-east-1:767904627276:activity:t16_product",
-      "End": true
+      "Next": "random_exception"
     },
     "calculate_addition": {
       "Type": "Task",
       "Resource": "arn:aws:states:us-east-1:767904627276:activity:t16_addition",
+      "Next": "random_exception"
+    },
+    "random_exception": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:us-east-1:767904627276:activity:t16_random_exception",
+      "Retry": [{
+        "ErrorEquals": [ "States.TaskFailed" ],
+        "IntervalSeconds": 3,
+        "MaxAttempts": 3,
+        "BackoffRate": 1.5
+      }],
       "End": true
     }
   }
