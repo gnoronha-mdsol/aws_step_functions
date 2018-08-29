@@ -42,7 +42,6 @@ activity = StepFunctions::Activity.new(
 )
 
 def reduce_to_single_digit(num)
-  puts "In recursive function - #{num}"
   if num > 10
     num = num.to_s.chars.map(&:to_i).reduce(:+)
     reduce_to_single_digit(num)
@@ -51,14 +50,16 @@ def reduce_to_single_digit(num)
   end
 end
 
-class RandomError < StandardError; end
+class RandomErrorA < StandardError; end
+class RandomErrorB < StandardError; end
 
 # The start method takes as argument the block that is the actual logic of your custom activity.
 # Just recursively reduces the number provided by adding the digits to a single digit.
 activity.start do |input|
 	number = reduce_to_single_digit(input['addition'] || input['product'])
   # Throws an exception randomly - this is to test Step Function Retries
-  random_num = rand(10)
-  raise RandomError if random_num%3 == 0
+  random_num = rand(4)
+  raise RandomErrorA.new("RandomError A") if random_num == 0 || random_num == 4
+  raise RandomErrorB.new("RandomError B") if random_num == 1
   { result: :SUCCESS, action: :reduction, number: number }
 end
